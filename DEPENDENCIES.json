@@ -1,0 +1,188 @@
+[
+  {
+    "name": "pqcrypto",
+    "version": "0.3.4",
+    "wheel_url": "https://files.pythonhosted.org/packages/b0/c5/651a6b94219be99c46629236711866e1943a171753257a7d29f43f57f258/pqcrypto-0.3.4-cp312-cp312-win_amd64.whl",
+    "wheel_sha256": "754d51a211d7681d963849fe41b8897ec0a25fcdcd6f6ce82d76ea8ba1861aaf",
+    "source_urls": [
+      "Repository, https://github.com/backbone-hq/pqcrypto",
+      "Bug Tracker, https://github.com/backbone-hq/pqcrypto/issues"
+    ],
+    "license_expression": "Apache-2.0",
+    "license_metadata": null,
+    "notice_files": [
+      "notices/pqcrypto/licenses/LICENSE",
+      "notices/pqcrypto/licenses/NOTICE"
+    ]
+  },
+  {
+    "name": "cryptography",
+    "version": "50.0.1",
+    "wheel_url": "https://files.pythonhosted.org/packages/42/8b/cb12b1b60c91b074ca6bf0fdd59aa8f10d8bc5f73af8faece86ef0421b37/cryptography-50.0.1-cp311-abi3-win_amd64.whl",
+    "wheel_sha256": "aed8db4f6d71c51efb89530e12d9464e7bf2923d46c3205dc794a2a93f8c0648",
+    "source_urls": [
+      "changelog, https://cryptography.io/en/latest/changelog/",
+      "documentation, https://cryptography.io/",
+      "homepage, https://github.com/pyca/cryptography",
+      "issues, https://github.com/pyca/cryptography/issues",
+      "source, https://github.com/pyca/cryptography/"
+    ],
+    "license_expression": "Apache-2.0 OR BSD-3-Clause",
+    "license_metadata": null,
+    "notice_files": [
+      "notices/cryptography/licenses/LICENSE",
+      "notices/cryptography/licenses/LICENSE.APACHE",
+      "notices/cryptography/licenses/LICENSE.BSD"
+    ]
+  },
+  {
+    "name": "pyopencl",
+    "version": "2026.1.4",
+    "wheel_url": "https://files.pythonhosted.org/packages/24/4f/f59a096cfb48667ce390bd9a19e604dd965bad52b6fecdf1a989a60ca4e3/pyopencl-2026.1.4-cp312-cp312-win_amd64.whl",
+    "wheel_sha256": "f5755d91aa5ce2d57c78f174d19ee0f2cb3fdd086f5f17b7972363608cccc719",
+    "source_urls": [
+      "Documentation, https://documen.tician.de/pyopencl",
+      "Homepage, https://mathema.tician.de/software/pyopencl",
+      "Repository, https://github.com/inducer/pyopencl"
+    ],
+    "license_expression": "MIT",
+    "license_metadata": null,
+    "notice_files": [
+      "notices/pyopencl/licenses/LICENSE"
+    ]
+  },
+  {
+    "name": "cffi",
+    "version": "2.1.1",
+    "wheel_url": "https://files.pythonhosted.org/packages/d9/79/615cc094e2fb508cade7de88d3b4f6c4ec2bab695c97bce9153dc65aadf5/cffi-2.1.1-cp312-cp312-win_amd64.whl",
+    "wheel_sha256": "f53e442b08449d42821fa4a4fba000095af9f62742a500f978a9f557ec44339a",
+    "source_urls": [
+      "Documentation, https://cffi.readthedocs.io/",
+      "Changelog, https://cffi.readthedocs.io/en/latest/whatsnew.html",
+      "Download, https://github.com/python-cffi/cffi/releases",
+      "Contact, https://groups.google.com/forum/#!forum/python-cffi",
+      "Source Code, https://github.com/python-cffi/cffi",
+      "Issue Tracker, https://github.com/python-cffi/cffi/issues"
+    ],
+    "license_expression": "MIT-0",
+    "license_metadata": null,
+    "notice_files": [
+      "notices/cffi/licenses/LICENSE"
+    ]
+  },
+  {
+    "name": "platformdirs",
+    "version": "4.12.1",
+    "wheel_url": "https://files.pythonhosted.org/packages/40/31/1521c38d175108ac395941adbcb9f11e085340bed81ad166e8ad8c21c17b/platformdirs-4.12.1-py3-none-any.whl",
+    "wheel_sha256": "7f251621befae78b2cb74616f9fc99d3fa3db0afba5035987731f8dcd430337d",
+    "source_urls": [
+      "Changelog, https://platformdirs.readthedocs.io/en/latest/changelog.html",
+      "Documentation, https://platformdirs.readthedocs.io",
+      "Homepage, https://github.com/tox-dev/platformdirs",
+      "Source, https://github.com/tox-dev/platformdirs",
+      "Tracker, https://github.com/tox-dev/platformdirs/issues"
+    ],
+    "license_expression": "MIT",
+    "license_metadata": null,
+    "notice_files": [
+      "notices/platformdirs/licenses/LICENSE"
+    ]
+  },
+  {
+    "name": "pytools",
+    "version": "2026.1.1",
+    "wheel_url": "https://files.pythonhosted.org/packages/bb/45/32a4b57ff351213094a533067db1846494db9bba5f3348b75223b94f3d22/pytools-2026.1.1-py3-none-any.whl",
+    "wheel_sha256": "1f6d9a39c871b6dc761893373792f10b67886c83e38f2aa09b66e11f8c021436",
+    "source_urls": [
+      "Documentation, https://documen.tician.de/pytools/",
+      "Homepage, https://github.com/inducer/pytools/"
+    ],
+    "license_expression": "MIT",
+    "license_metadata": null,
+    "notice_files": [
+      "notices/pytools/licenses/LICENSE"
+    ]
+  },
+  {
+    "name": "typing_extensions",
+    "version": "4.16.0",
+    "wheel_url": "https://files.pythonhosted.org/packages/49/d3/b8441a820a491ddfc024b0b0cf0393375b75ea13866d9c66727e54c2fc80/typing_extensions-4.16.0-py3-none-any.whl",
+    "wheel_sha256": "481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8",
+    "source_urls": [
+      "Bug Tracker, https://github.com/python/typing_extensions/issues",
+      "Changes, https://github.com/python/typing_extensions/blob/main/CHANGELOG.md",
+      "Documentation, https://typing-extensions.readthedocs.io/",
+      "Home, https://github.com/python/typing_extensions",
+      "Q & A, https://github.com/python/typing/discussions",
+      "Repository, https://github.com/python/typing_extensions"
+    ],
+    "license_expression": "PSF-2.0",
+    "license_metadata": null,
+    "notice_files": [
+      "notices/typing_extensions/licenses/LICENSE"
+    ]
+  },
+  {
+    "name": "numpy",
+    "version": "2.5.3",
+    "wheel_url": "https://files.pythonhosted.org/packages/3c/a1/accf6d4f0c80c5d9ba9735d6b1550e444180599f34dec69ca01360f717ad/numpy-2.5.3-cp312-cp312-win_amd64.whl",
+    "wheel_sha256": "0a59a421a32580a009e8a1751345bf829631b990dc1794b80514ab722b435def",
+    "source_urls": [
+      "homepage, https://numpy.org",
+      "documentation, https://numpy.org/doc/",
+      "source, https://github.com/numpy/numpy",
+      "download, https://pypi.org/project/numpy/#files",
+      "tracker, https://github.com/numpy/numpy/issues",
+      "release notes, https://numpy.org/doc/stable/release"
+    ],
+    "license_expression": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+    "license_metadata": null,
+    "notice_files": [
+      "notices/numpy/licenses/LICENSE.txt",
+      "notices/numpy/licenses/numpy/_core/include/numpy/libdivide/LICENSE.txt",
+      "notices/numpy/licenses/numpy/_core/src/common/pythoncapi-compat/COPYING",
+      "notices/numpy/licenses/numpy/_core/src/highway/LICENSE",
+      "notices/numpy/licenses/numpy/_core/src/multiarray/dragon4_LICENSE.txt",
+      "notices/numpy/licenses/numpy/_core/src/npysort/x86-simd-sort/LICENSE.md",
+      "notices/numpy/licenses/numpy/_core/src/umath/svml/LICENSE",
+      "notices/numpy/licenses/numpy/fft/pocketfft/LICENSE.md",
+      "notices/numpy/licenses/numpy/linalg/lapack_lite/LICENSE.txt",
+      "notices/numpy/licenses/numpy/ma/LICENSE",
+      "notices/numpy/licenses/numpy/random/LICENSE.md",
+      "notices/numpy/licenses/numpy/random/src/distributions/LICENSE.md",
+      "notices/numpy/licenses/numpy/random/src/mt19937/LICENSE.md",
+      "notices/numpy/licenses/numpy/random/src/pcg64/LICENSE.md",
+      "notices/numpy/licenses/numpy/random/src/philox/LICENSE.md",
+      "notices/numpy/licenses/numpy/random/src/sfc64/LICENSE.md",
+      "notices/numpy/licenses/numpy/random/src/splitmix64/LICENSE.md"
+    ]
+  },
+  {
+    "name": "siphash24",
+    "version": "1.9",
+    "wheel_url": "https://files.pythonhosted.org/packages/2f/c1/8a4dea02b1ea07ad0fed9eed860a06fb3d5fdaa7004c00b8cd156c48905f/siphash24-1.9-cp312-cp312-win_amd64.whl",
+    "wheel_sha256": "15a094ab55a4f404f6a449b97105a5484a8e13a9ff2acdf7aa7694630cbc244d",
+    "source_urls": [
+      "Documentation, https://dnicolodi.github.io/python-siphash24/",
+      "Source, https://github.com/dnicolodi/python-siphash24/",
+      "Issue Tracker, https://github.com/dnicolodi/python-siphash24/issues"
+    ],
+    "license_expression": "Apache-2.0 OR LGPL-2.1-or-later",
+    "license_metadata": null,
+    "notice_files": []
+  },
+  {
+    "name": "pycparser",
+    "version": "3.0",
+    "wheel_url": "https://files.pythonhosted.org/packages/0c/c3/44f3fbbfa403ea2a7c779186dc20772604442dde72947e7d01069cbe98e3/pycparser-3.0-py3-none-any.whl",
+    "wheel_sha256": "b727414169a36b7d524c1c3e31839a521725078d7b2ff038656844266160a992",
+    "source_urls": [
+      "Homepage, https://github.com/eliben/pycparser"
+    ],
+    "license_expression": "BSD-3-Clause",
+    "license_metadata": null,
+    "notice_files": [
+      "notices/pycparser/licenses/LICENSE"
+    ]
+  }
+]

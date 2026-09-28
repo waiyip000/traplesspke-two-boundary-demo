@@ -1,0 +1,5 @@
+Copyright 2026 Wai Yip, WONG
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+Scope: newly authored files in this demonstration distribution.
+Third-party notices and separately distributed dependency wheels retain their own terms.
+No commercial TraplessPKE source, binaries or history are included.
