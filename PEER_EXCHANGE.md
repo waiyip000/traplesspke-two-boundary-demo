@@ -40,3 +40,9 @@ The application reads challenge/view grammar version 1. New submissions and
 closures use record version 2. Earlier submitted or closed records are not
 silently relabelled. Contradictory submission/closure timestamps are rejected;
 resolve a clock discrepancy without modifying an already exchanged prediction.
+
+For installation and challenge preparation, start with the [user manual](USER_MANUAL.md) and command help. Use the [observation model](THREAT_MODEL.md) to identify the supplied view and the [reporting guidance](SECURITY.md) for findings. [Recorded functional validation](VALIDATION.md) checks this exchange machinery; it is not an independent peer result.
+
+---
+
+[Demo home](README.md) · [Repository guide](PROJECT_MAP.md) · [Downloads](https://github.com/waiyip000/traplesspke-two-boundary-demo/releases/tag/v0.1.2) · [Research hub — currently private](https://github.com/waiyip000/TraplessPKE)

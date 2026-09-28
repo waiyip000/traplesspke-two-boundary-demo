@@ -20,6 +20,16 @@ whole archive and run `TraplessPKEDemo.exe --help` in PowerShell. It is a consol
 application. Keep its `_internal` directory alongside the executable.
 [BUILD_WINDOWS.md](BUILD_WINDOWS.md) explains the public build recipe.
 
+## Project links
+
+[Research and project hub](https://github.com/waiyip000/TraplessPKE) · [Repository guide](PROJECT_MAP.md) · [Functional validation](VALIDATION.md).
+
+The original research hub preserves the whitepaper, authorship chronology and
+project context. It is currently private pending owner review, so its links
+require access and may show GitHub 404 otherwise. This public demo is self-contained;
+its downloads, instructions and [IEEE paper link](https://ieeexplore.ieee.org/document/11366456)
+do not require access to that repository.
+
 ## Research origin and implementation separation
 
 Wai Yip Wong, "TraplessPKE: A Selector-Based, Oracleless, Post-Quantum
@@ -118,3 +128,7 @@ This profile omits signatures, a GUI, commercial product internals and a numeric
 attack campaign. Optional OpenCL producers create public synthetic inputs;
 ordinary cryptography has no GPU dependency. Install the separate pinned GPU
 requirements only to use those producers.
+
+---
+
+[Demo home](README.md) · [Repository guide](PROJECT_MAP.md) · [Downloads](https://github.com/waiyip000/traplesspke-two-boundary-demo/releases/tag/v0.1.2) · [Research hub — currently private](https://github.com/waiyip000/TraplessPKE)

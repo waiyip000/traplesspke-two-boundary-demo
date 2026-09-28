@@ -44,3 +44,9 @@ not claim protection from a malicious administrator or underlying storage failur
 For simple teaching inputs the optional public `example_images.py` producer creates
 two distinct viewable BMP candidates with an inspectable OpenCL kernel. It runs
 before a challenge bit is selected and does not encode an intended-file marker.
+
+Use the [user manual](USER_MANUAL.md) for executable commands and the [peer-exchange guide](PEER_EXCHANGE.md) for a separate reviewer workflow. The [dated validation summary](VALIDATION.md) records actual interruption/resume and byte-comparison controls.
+
+---
+
+[Demo home](README.md) · [Repository guide](PROJECT_MAP.md) · [Downloads](https://github.com/waiyip000/traplesspke-two-boundary-demo/releases/tag/v0.1.2) · [Research hub — currently private](https://github.com/waiyip000/TraplessPKE)

@@ -37,3 +37,18 @@ Passing controls does not prove general choice indistinguishability, post-quantu
 security, constant-time operation, independent peer ordering, an empirical bound
 or absence of every flaw. The release's `ACCEPTANCE_RESULT.json` records actual
 outcomes. A plan, manifest or launch receipt alone is not a passing result.
+
+## Expanded Windows run — 28 September 2026
+
+[VALIDATION.md](VALIDATION.md) records the later complete Windows functional run
+against published 0.1.2 artifacts: six core families, all fourteen CLI commands,
+57/57 observed named application functions and both optional GPU producers.
+The core families used this public runner. The expanded real-terminal and
+function-observation harness was local and is not part of this release's
+`acceptance.py`; running that file alone does not reproduce the extra coverage.
+The original release result remains unchanged. No independent security verdict
+is inferred from either record.
+
+---
+
+[Demo home](README.md) · [Repository guide](PROJECT_MAP.md) · [Downloads](https://github.com/waiyip000/traplesspke-two-boundary-demo/releases/tag/v0.1.2) · [Research hub — currently private](https://github.com/waiyip000/TraplessPKE)

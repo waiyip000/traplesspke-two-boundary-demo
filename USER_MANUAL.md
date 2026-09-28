@@ -2,10 +2,15 @@
 
 Application 0.1.2; Windows executable packaging revision 1. Copyright 2026 Wai Yip, WONG. Demo source: Apache-2.0. This independent demonstration contains no commercial desktop 1.1.4 source or backend.
 
+[Download demo 0.1.2](https://github.com/waiyip000/traplesspke-two-boundary-demo/releases/tag/v0.1.2) · [Demo source](https://github.com/waiyip000/traplesspke-two-boundary-demo) · [Repository guide](PROJECT_MAP.md).
+
+The [original research hub](https://github.com/waiyip000/TraplessPKE) is currently private pending owner review.
+You do not need access to it to use or examine this demonstration.
+
 ## Choose a download
 
 - **Windows executable ZIP:** extract the complete archive. Keep TraplessPKEDemo.exe and _internal together. No separate Python installation is required. This is a command-line application, not the commercial graphical interface.
-- **Source ZIP / repository:** inspect all demo algorithms and use the source installation in README.md. Requires 64-bit CPython 3.12 and the pinned dependencies.
+- **Source ZIP / repository:** inspect all demo algorithms and use the source installation in [README.md](README.md). Requires 64-bit CPython 3.12 and the pinned dependencies.
 - **Offline Python kit:** extract completely and run install.py as described in README.md. Python itself is not included in that kit.
 
 Use a separate private working directory with synthetic files and a disposable identity. Verify a download against the release SHA256SUMS.txt using Get-FileHash. The executable is unsigned; no publisher-signing certificate is claimed.
@@ -80,13 +85,13 @@ Use a disposable identity that protects no other messages:
 
 V0 exports the public identity and bundle. V1a adds both actually decoded candidates. V1b also discloses the content private key and actual decoding material. Intent authority and owner selected-index records are excluded from that export. Do not share the owner directory or private identity.
 
-Both capabilities use ML-KEM-768. Content-key disclosure is not the same experiment as a general break of the shared primitive. The explicit export is not a full-process memory dump. See PROTOCOL.md, THREAT_MODEL.md and LIMITATIONS.md.
+Both capabilities use ML-KEM-768. Content-key disclosure is not the same experiment as a general break of the shared primitive. The explicit export is not a full-process memory dump. See [PROTOCOL.md](PROTOCOL.md), [THREAT_MODEL.md](THREAT_MODEL.md) and [LIMITATIONS.md](LIMITATIONS.md).
 
 ## Independent examination and reports
 
-Experts may inspect and modify the demo under Apache-2.0 and conduct local analysis on their own disposable inputs. PEER_EXCHANGE.md describes committed challenges, independent predictions and reveal accounting. It does not authorize testing third-party services or operational transport systems. No public decryption/guess-confirmation service is provided.
+Experts may inspect and modify the demo under Apache-2.0 and conduct local analysis on their own disposable inputs. [PEER_EXCHANGE.md](PEER_EXCHANGE.md) describes committed challenges, independent predictions and reveal accounting. It does not authorize testing third-party services or operational transport systems. No public decryption/guess-confirmation service is provided.
 
-Report findings through the dedicated demo repository's Issues, identifying version, observation view, assumptions, expected behavior and actual observations. Use synthetic examples. Do not post reusable private keys, passwords, private commercial material or unrevealed challenge truth. Functional acceptance and a successful round trip do not prove universal unbreakability.
+Report findings through the [dedicated demo repository's Issues](https://github.com/waiyip000/traplesspke-two-boundary-demo/issues), identifying version, observation view, assumptions, expected behavior and actual observations. Use synthetic examples. Do not post reusable private keys, passwords, private commercial material or unrevealed challenge truth. Functional acceptance and a successful round trip do not prove universal unbreakability.
 
 ## Troubleshooting and scope
 
@@ -98,3 +103,7 @@ Report findings through the dedicated demo repository's Issues, identifying vers
 - The demo has two candidates, no signature feature, no GUI and no commercial vault. Optional GPU example generation requires the separate source-installation dependencies.
 
 Use this experimental demonstration for inspection with disposable data, not for live cash, valuables or VIP movement instructions.
+
+---
+
+[Demo home](README.md) · [Repository guide](PROJECT_MAP.md) · [Downloads](https://github.com/waiyip000/traplesspke-two-boundary-demo/releases/tag/v0.1.2) · [Research hub — currently private](https://github.com/waiyip000/TraplessPKE)

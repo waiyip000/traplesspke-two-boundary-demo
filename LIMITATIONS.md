@@ -25,5 +25,9 @@
   controls recorded in the release result count as passed.
 - The owner walkthrough resumes committed compatible stages. Separate low-level
   CLI operations preserve partials but do not resume inside a primitive or chunk.
-- Demo source uses Apache-2.0. Public availability requires an actual repository
-  URL and release; source preparation alone does not establish publication.
+- Demo source uses Apache-2.0 and is [publicly released](https://github.com/waiyip000/traplesspke-two-boundary-demo/releases/tag/v0.1.2).
+  Research-hub access is separate; this demo does not require that repository.
+
+---
+
+[Demo home](README.md) · [Repository guide](PROJECT_MAP.md) · [Downloads](https://github.com/waiyip000/traplesspke-two-boundary-demo/releases/tag/v0.1.2) · [Research hub — currently private](https://github.com/waiyip000/TraplessPKE)

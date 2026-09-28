@@ -11,8 +11,21 @@ Private delivery orchestration is not a runtime dependency. The public installer
 control runner and application functions are included. The source ZIP contains
 only the explicit standalone demo members and dependency notices.
 
-Ordinary users do not need that constructor: the public commands perform actual
+Ordinary users need only a supported demo installation: the public commands perform actual
 key generation, selection, encryption, recovery, exposure, submission and reveal.
 The separate acceptance runner executes finite functional controls. Consult
 ACCEPTANCE.md and the release result for the actual scope; no adversarial campaign
 or empirical security bound follows from source construction alone.
+
+## Documentation and release records
+
+Use [the repository guide](PROJECT_MAP.md) to distinguish research documents,
+demo source and private commercial work. `PUBLIC_FILES.json` describes the
+immutable [v0.1.2 release tree](https://github.com/waiyip000/traplesspke-two-boundary-demo/tree/v0.1.2). Later documentation on main
+can differ without changing that application release. The additional Windows
+validation summary is in [VALIDATION.md](VALIDATION.md); the public
+`acceptance.py` runner still implements the six core families documented above.
+
+---
+
+[Demo home](README.md) · [Repository guide](PROJECT_MAP.md) · [Downloads](https://github.com/waiyip000/traplesspke-two-boundary-demo/releases/tag/v0.1.2) · [Research hub — currently private](https://github.com/waiyip000/TraplessPKE)

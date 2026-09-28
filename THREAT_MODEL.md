@@ -40,3 +40,9 @@ Owner truth is revealed only by a separate close operation. A hostile owner of
 the filesystem can rewrite local history: external peer exchange is necessary
 to attest genuine submission ordering. Teaching runs on one PC are not blinded
 peer evidence. A revealed trial cannot be reused as a fresh trial.
+
+See the [complete protocol](PROTOCOL.md), [peer-exchange procedure](PEER_EXCHANGE.md) and [functional-validation limits](VALIDATION.md). The [repository guide](PROJECT_MAP.md) distinguishes this demo from the research record and commercial application.
+
+---
+
+[Demo home](README.md) · [Repository guide](PROJECT_MAP.md) · [Downloads](https://github.com/waiyip000/traplesspke-two-boundary-demo/releases/tag/v0.1.2) · [Research hub — currently private](https://github.com/waiyip000/TraplessPKE)
