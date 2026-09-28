@@ -4,7 +4,7 @@ Application 0.1.2; Windows executable packaging revision 1. Copyright 2026 Wai Y
 
 [Download demo 0.1.2](https://github.com/waiyip000/traplesspke-two-boundary-demo/releases/tag/v0.1.2) · [Demo source](https://github.com/waiyip000/traplesspke-two-boundary-demo) · [Repository guide](PROJECT_MAP.md).
 
-The [original research hub](https://github.com/waiyip000/TraplessPKE) is currently private pending owner review.
+The [original research hub](https://github.com/waiyip000/TraplessPKE) is now public following the owner's publication instruction.
 You do not need access to it to use or examine this demonstration.
 
 ## Choose a download
@@ -106,4 +106,4 @@ Use this experimental demonstration for inspection with disposable data, not for
 
 ---
 
-[Demo home](README.md) · [Repository guide](PROJECT_MAP.md) · [Downloads](https://github.com/waiyip000/traplesspke-two-boundary-demo/releases/tag/v0.1.2) · [Research hub — currently private](https://github.com/waiyip000/TraplessPKE)
+[Demo home](README.md) · [Repository guide](PROJECT_MAP.md) · [Downloads](https://github.com/waiyip000/traplesspke-two-boundary-demo/releases/tag/v0.1.2) · [Research hub](https://github.com/waiyip000/TraplessPKE)

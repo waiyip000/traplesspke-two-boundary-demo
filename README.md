@@ -25,8 +25,8 @@ application. Keep its `_internal` directory alongside the executable.
 [Research and project hub](https://github.com/waiyip000/TraplessPKE) · [Repository guide](PROJECT_MAP.md) · [Functional validation](VALIDATION.md).
 
 The original research hub preserves the whitepaper, authorship chronology and
-project context. It is currently private pending owner review, so its links
-require access and may show GitHub 404 otherwise. This public demo is self-contained;
+project context. Both repositories are now public following the owner's
+publication instruction. This demo is self-contained;
 its downloads, instructions and [IEEE paper link](https://ieeexplore.ieee.org/document/11366456)
 do not require access to that repository.
 
@@ -131,4 +131,4 @@ requirements only to use those producers.
 
 ---
 
-[Demo home](README.md) · [Repository guide](PROJECT_MAP.md) · [Downloads](https://github.com/waiyip000/traplesspke-two-boundary-demo/releases/tag/v0.1.2) · [Research hub — currently private](https://github.com/waiyip000/TraplessPKE)
+[Demo home](README.md) · [Repository guide](PROJECT_MAP.md) · [Downloads](https://github.com/waiyip000/traplesspke-two-boundary-demo/releases/tag/v0.1.2) · [Research hub](https://github.com/waiyip000/TraplessPKE)

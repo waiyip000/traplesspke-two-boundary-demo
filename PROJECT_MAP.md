@@ -9,10 +9,9 @@ Updated 28 September 2026. Creator and project director: Wai Yip, WONG.
 | [Demo v0.1.2 release](https://github.com/waiyip000/traplesspke-two-boundary-demo/releases/tag/v0.1.2) | Fixed source archive, Windows executable, offline Python kit, release manual and checksums |
 | Commercial desktop 1.1.4 | Separate private implementation; no commercial code or executable download in either repository |
 
-**Research access:** the original repository is currently private pending owner
-review. Its links may show GitHub 404 without permission. This demo is public and
-self-contained; none of its runtime, installation or review instructions depends
-on that access. The [IEEE paper record](https://ieeexplore.ieee.org/document/11366456)
+**Public access:** both repositories are now public following the owner's
+publication instruction on 28 September 2026. Research links can be followed
+without private-repository permission. The demo remains self-contained. The [IEEE paper record](https://ieeexplore.ieee.org/document/11366456)
 is a separate publisher link.
 
 ## Demonstration documents
@@ -28,7 +27,7 @@ is a separate publisher link.
 - [Disclosure boundary](DISCLOSURE.md), [LICENSE](LICENSE), [NOTICE](NOTICE) and [dependency notices](THIRD_PARTY_NOTICES.md): source and distribution scope.
 - [Issue reporting](SECURITY.md), [release notes](RELEASE_NOTES.md) and [changes](CHANGES.md): maintenance.
 
-## Research documents requiring repository access
+## Research documents
 
 [History](https://github.com/waiyip000/TraplessPKE/blob/main/HISTORY.md) · [Publications](https://github.com/waiyip000/TraplessPKE/blob/main/PUBLICATIONS.md) ·
 [Design evolution](https://github.com/waiyip000/TraplessPKE/blob/main/DESIGN_EVOLUTION.md) · [Current status](https://github.com/waiyip000/TraplessPKE/blob/main/CURRENT_STATUS.md) ·
@@ -48,4 +47,4 @@ release assets or change application code.
 
 ---
 
-[Demo home](README.md) · [Repository guide](PROJECT_MAP.md) · [Downloads](https://github.com/waiyip000/traplesspke-two-boundary-demo/releases/tag/v0.1.2) · [Research hub — currently private](https://github.com/waiyip000/TraplessPKE)
+[Demo home](README.md) · [Repository guide](PROJECT_MAP.md) · [Downloads](https://github.com/waiyip000/traplesspke-two-boundary-demo/releases/tag/v0.1.2) · [Research hub](https://github.com/waiyip000/TraplessPKE)

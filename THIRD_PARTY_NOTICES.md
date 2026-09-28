@@ -28,9 +28,9 @@ licence clearance or source provenance is made by this table.
 [Demo LICENSE](LICENSE) · [Demo NOTICE](NOTICE) · [Dependency manifest](DEPENDENCIES.json) · [Build instructions](BUILD_WINDOWS.md).
 
 The [research repository's licensing explanation](https://github.com/waiyip000/TraplessPKE/blob/main/LICENSING.md)
-concerns a separate repository and currently requires access. The demo's own
-licence and included notices are available here without that access.
+concerns the separate public research repository. The demo's own licence and
+included notices remain directly available here.
 
 ---
 
-[Demo home](README.md) · [Repository guide](PROJECT_MAP.md) · [Downloads](https://github.com/waiyip000/traplesspke-two-boundary-demo/releases/tag/v0.1.2) · [Research hub — currently private](https://github.com/waiyip000/TraplessPKE)
+[Demo home](README.md) · [Repository guide](PROJECT_MAP.md) · [Downloads](https://github.com/waiyip000/traplesspke-two-boundary-demo/releases/tag/v0.1.2) · [Research hub](https://github.com/waiyip000/TraplessPKE)

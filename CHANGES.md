@@ -1,5 +1,10 @@
 # Changes
 
+## Public sharing — 28 September 2026
+
+- Both research and demo repositories are now public at the owner's instruction.
+- Removed temporary-private navigation notices; application and release assets unchanged.
+
 ## Documentation update — 28 September 2026
 
 - Add two-way repository links and task-specific document navigation.
@@ -18,4 +23,4 @@
 
 ---
 
-[Demo home](README.md) · [Repository guide](PROJECT_MAP.md) · [Downloads](https://github.com/waiyip000/traplesspke-two-boundary-demo/releases/tag/v0.1.2) · [Research hub — currently private](https://github.com/waiyip000/TraplessPKE)
+[Demo home](README.md) · [Repository guide](PROJECT_MAP.md) · [Downloads](https://github.com/waiyip000/traplesspke-two-boundary-demo/releases/tag/v0.1.2) · [Research hub](https://github.com/waiyip000/TraplessPKE)
