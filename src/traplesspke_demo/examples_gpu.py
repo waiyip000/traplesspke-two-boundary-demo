@@ -5,6 +5,7 @@ from pathlib import Path
 import time
 
 from .files import DemoError, output, write_json
+from .paths import plain, vacant
 
 KERNEL = r"""
 __kernel void teaching_bytes(__global uint *out, const uint seed) {
@@ -18,7 +19,11 @@ __kernel void teaching_bytes(__global uint *out, const uint seed) {
 def create_public_inputs(folder):
     import numpy as np
     import pyopencl as cl
-    folder = Path(folder)
+    folder = plain(folder)
+    if not folder.is_dir():
+        raise DemoError("Public input producer requires an existing ordinary folder")
+    for name in (".opencl-cache","candidate-0.bin","candidate-1.bin","INPUT_ORIGIN.json"):
+        vacant(folder/name)
     start = time.perf_counter_ns()
     devices = []
     for platform in cl.get_platforms():

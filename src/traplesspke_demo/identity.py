@@ -9,7 +9,8 @@ from cryptography.exceptions import InvalidTag
 from cryptography.hazmat.primitives.ciphers.aead import AESGCMSIV
 from cryptography.hazmat.primitives.kdf.scrypt import Scrypt
 
-from .files import DemoError, b64, canonical, fields, read_json, unb64, write_json
+from .files import DemoError, b64, canonical, fields, read_json, unb64, write_json, _pairs, admit
+from .paths import vacant
 
 SUITE = "TBDEMO1-MLKEM768-HKDFSHA256-AES256GCMSIV"
 PUB = "trapless-demo-public-1"
@@ -38,6 +39,10 @@ def password_key(password, salt):
 
 
 def keygen(private_path, public_path, password):
+    if vacant(private_path) == vacant(public_path):
+        raise DemoError('Private and public outputs must differ')
+    admit(private_path, 32768)
+    admit(public_path, 32768)
     # Independent RNG-backed keygen calls, not public/content-derived intent.
     with ThreadPoolExecutor(max_workers=2) as pool:
         first = pool.submit(kem.generate_keypair)
@@ -66,11 +71,12 @@ def unlock(path, password):
     try:
         raw = AESGCMSIV(password_key(password, unb64(obj["salt"], 16))).decrypt(
             unb64(obj["nonce"], 12), unb64(obj["encrypted"]), canonical(header))
-        secret = json.loads(raw)
+        secret = json.loads(raw, object_pairs_hook=_pairs,
+                            parse_constant=lambda _: (_ for _ in ()).throw(DemoError('Non-finite JSON')))
         fields(secret, ("content", "intent"))
         sc = unb64(secret["content"], kem.SECRET_KEY_SIZE)
         si = unb64(secret["intent"], kem.SECRET_KEY_SIZE)
-    except (InvalidTag, ValueError, KeyError) as exc:
+    except (InvalidTag, ValueError, KeyError, RecursionError) as exc:
         raise DemoError("Private identity authentication failed") from exc
     return public, sc, si
 

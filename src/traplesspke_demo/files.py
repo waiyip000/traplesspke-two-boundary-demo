@@ -9,8 +9,8 @@ import shutil
 import uuid
 
 
-class DemoError(Exception):
-    pass
+from .files_error import DemoError
+from .paths import extended, plain, vacant
 
 
 @contextmanager
@@ -25,7 +25,7 @@ def locked_read(path):
                                   ctypes.c_void_p, ctypes.c_uint32, ctypes.c_uint32, ctypes.c_void_p]
     kernel.CreateFileW.restype = ctypes.c_void_p
     kernel.CloseHandle.argtypes = [ctypes.c_void_p]
-    name = str(Path(path).resolve())
+    name = str(plain(path))
     if not name.startswith("\\\\?\\"):
         name = "\\\\?\\UNC\\" + name[2:] if name.startswith("\\\\") else "\\\\?\\" + name
     handle = kernel.CreateFileW(name, 0x80000000, 1, None, 3, 0x08000000, None)
@@ -55,6 +55,8 @@ def _pairs(pairs):
 
 
 def read_json(path, limit=32768):
+    if type(limit) is not int or not 0 < limit <= 4*1024**2:
+        raise DemoError('Invalid metadata read limit')
     with locked_read(path) as f:
         raw = f.read(limit + 1)
     if len(raw) > limit:
@@ -62,7 +64,7 @@ def read_json(path, limit=32768):
     try:
         return json.loads(raw, object_pairs_hook=_pairs,
                           parse_constant=lambda _: (_ for _ in ()).throw(DemoError("Non-finite JSON")))
-    except (ValueError, UnicodeError) as exc:
+    except (ValueError, UnicodeError, RecursionError) as exc:
         raise DemoError("Invalid JSON") from exc
 
 
@@ -88,6 +90,8 @@ def unb64(value, length=None):
 
 
 def exact(f, count):
+    if type(count) is not int or count < 0:
+        raise DemoError("Invalid exact-read byte count")
     raw = f.read(count)
     if len(raw) != count:
         raise DemoError("Truncated object")
@@ -103,7 +107,9 @@ def digest_file(path):
 
 
 def admit(path, required):
-    parent = Path(path).resolve().parent
+    if type(required) is not int or required < 0:
+        raise DemoError('Invalid required output size')
+    parent = vacant(path).parent
     if not parent.is_dir():
         raise DemoError("Output parent directory does not exist")
     free = shutil.disk_usage(parent).free
@@ -113,17 +119,16 @@ def admit(path, required):
 
 @contextmanager
 def output(path):
-    path = Path(path).resolve()
-    if path.exists():
-        raise DemoError("Output already exists; choose a new path")
-    temp = path.with_name(path.name + ".partial-" + uuid.uuid4().hex[:12])
-    with temp.open("xb") as f:
+    path = vacant(path)
+    temp = path.parent / ('.demo-partial-' + uuid.uuid4().hex)
+    with extended(plain(temp)).open("xb") as f:
         yield f
         f.flush()
         os.fsync(f.fileno())
     # Windows rename refuses an existing destination, including a race winner.
     if os.name == "nt":
-        os.rename(temp, path)
+        vacant(path)
+        os.rename(extended(plain(temp)), extended(path))
     else:
         os.link(temp, path)
         temp.unlink()
@@ -140,8 +145,8 @@ def copy_new(source, target):
 
 
 def compare_files(original, recovered):
-    a, b = Path(original).resolve(), Path(recovered).resolve()
-    if a == b or os.path.samefile(a, b):
+    a, b = plain(original), plain(recovered)
+    if a == b or os.path.samefile(extended(a), extended(b)):
         raise DemoError("Comparison requires separate original and recovered files")
     total = 0
     ha, hb = hashlib.sha256(), hashlib.sha256()

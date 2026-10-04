@@ -13,14 +13,18 @@ from .identity import keygen
 from .observation import expose
 from .protocol import send
 from . import records
+from .paths import plain, vacant, extended, members
+from .protocol import header_read
+from .identity import validate_public
+from .files import locked_read
 
 
 @contextmanager
 def lease(folder):
     """An OS lock is released if the process exits; the lock carrier may remain."""
-    lock = Path(folder) / ".transcript.lock"
-    with lock.open("a+b") as f:
-        if lock.stat().st_size == 0:
+    lock = plain(plain(folder) / ".transcript.lock")
+    with extended(lock).open("a+b") as f:
+        if os.fstat(f.fileno()).st_size == 0:
             f.write(b"0")
             f.flush()
         f.seek(0)
@@ -55,7 +59,7 @@ def commitment(truth):
 
 
 def create(candidates, owner_dir, public_dir, password, view="V1b"):
-    owner, public = Path(owner_dir).resolve(), Path(public_dir).resolve()
+    owner, public = vacant(owner_dir), vacant(public_dir)
     if owner == public or owner.is_relative_to(public) or public.is_relative_to(owner):
         raise DemoError("Owner and public folders must be separate, not nested")
     if public.exists():
@@ -80,7 +84,7 @@ def create(candidates, owner_dir, public_dir, password, view="V1b"):
 
 
 def load_challenge(folder):
-    folder = Path(folder)
+    folder = plain(folder)
     challenge = read_json(folder / "CHALLENGE.json")
     fields(challenge, ("format", "trial_id", "bundle_sha256", "truth_commitment", "view",
                        "view_manifest_sha256", "state", "random_guess_probability", "ordering"))
@@ -91,6 +95,8 @@ def load_challenge(folder):
         records.hex_id(challenge[name])
     if challenge["view"] not in ("V0", "V1a", "V1b") or type(challenge["random_guess_probability"]) not in (int, float) or challenge["random_guess_probability"] != 0.5:
         raise DemoError("Unsupported observation model")
+    if challenge['ordering']!='Local immutable records; peer exchange required for independent ordering':
+        raise DemoError('Invalid local ordering model')
     if challenge["bundle_sha256"] != digest_file(folder / "bundle.tbd"):
         raise DemoError("Changed challenge bundle")
     if challenge["view_manifest_sha256"] != digest_file(folder / "VIEW.json"):
@@ -106,11 +112,18 @@ def load_challenge(folder):
         names.add("content-authority.json")
     if set(view["files"]) != names:
         raise DemoError("View members differ from the declared disclosure scope")
+    if view['withheld']!=['intent_private_key','intent_shared_secret','sender_choice','selected_output'] or view['scope']!='Explicit exported state; not arbitrary whole-process memory':
+        raise DemoError('Invalid declared observation boundary')
+    actual=set(members(folder))
+    if not actual <= names|{'VIEW.json','CHALLENGE.json','SUBMISSION.json','CLOSED.json','.transcript.lock'}:
+        raise DemoError('Undeclared file in public observation folder')
     for name, digest in view["files"].items():
         records.hex_id(digest)
-        path = (folder / name).resolve()
+        path = plain(folder / name)
         if not path.is_relative_to(folder.resolve()) or digest_file(path) != digest:
             raise DemoError("Changed observation member")
+    public=validate_public(read_json(folder/'public.json'))
+    with locked_read(folder/'bundle.tbd') as stream:header_read(stream,public)
     return challenge
 
 
@@ -209,7 +222,10 @@ def summarize(folders):
 
 
 def export_submission(public_dir, destination):
-    folder = Path(public_dir)
+    folder = plain(public_dir)
+    destination = vacant(destination)
+    if destination.is_relative_to(folder):
+        raise DemoError("Export the submission outside the public challenge folder")
     with lease(folder):
         challenge = load_challenge(folder)
         if (folder / "CLOSED.json").exists():

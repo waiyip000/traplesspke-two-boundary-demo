@@ -1,15 +1,15 @@
 # TraplessPKE Two-Boundary demonstration — user manual
 
-Application 0.1.2; Windows executable packaging revision 1. Copyright 2026 Wai Yip, WONG. Demo source: Apache-2.0. This independent demonstration contains no commercial desktop 1.1.4 source or backend.
+Application 0.1.4; Windows x64 demonstration release. Copyright 2026 Wai Yip, WONG. Demo source: Apache-2.0. This demonstration is self-contained and has no hidden backend.
 
-[Download demo 0.1.2](https://github.com/waiyip000/traplesspke-two-boundary-demo/releases/tag/v0.1.2) · [Demo source](https://github.com/waiyip000/traplesspke-two-boundary-demo) · [Repository guide](PROJECT_MAP.md).
+[Download demo 0.1.4](https://github.com/waiyip000/traplesspke-two-boundary-demo/releases/tag/v0.1.4) · [Demo source](https://github.com/waiyip000/traplesspke-two-boundary-demo) · [Repository guide](PROJECT_MAP.md).
 
 The [original research hub](https://github.com/waiyip000/TraplessPKE) is now public following the owner's publication instruction.
 You do not need access to it to use or examine this demonstration.
 
 ## Choose a download
 
-- **Windows executable ZIP:** extract the complete archive. Keep TraplessPKEDemo.exe and _internal together. No separate Python installation is required. This is a command-line application, not the commercial graphical interface.
+- **Windows executable ZIP:** extract the complete archive. Keep TraplessPKEDemo.exe and _internal together. No separate Python installation is required. This is a command-line application, with no GUI.
 - **Source ZIP / repository:** inspect all demo algorithms and use the source installation in [README.md](README.md). Requires 64-bit CPython 3.12 and the pinned dependencies.
 - **Offline Python kit:** extract completely and run install.py as described in README.md. Python itself is not included in that kit.
 
@@ -24,7 +24,7 @@ Open PowerShell inside the extracted TraplessPKEDemo directory:
 .\TraplessPKEDemo.exe --version
 ```
 
-For a source installation, replace .\TraplessPKEDemo.exe in subsequent commands with python -m traplesspke_demo. For an installed offline kit, use the generated demo.ps1 launcher. Use full paths if your private files are elsewhere.
+For a source installation, replace .\TraplessPKEDemo.exe in subsequent commands with python -m traplesspke_demo. For an installed offline kit, use `env\Scripts\trapless-demo.exe`; `demo.ps1` is optional and subject to host policy. Use full paths if your private files are elsewhere.
 
 ## Create a reusable identity
 
@@ -50,7 +50,7 @@ Prepare exactly two files, first.bin and second.bin. The following selects the s
 
 The CLI displays the full selected path and asks for confirmation and the identity password. It actually encrypts, recovers through private-key operations and compares bytes with the original selection. Index 0 selects the first file. This owner walkthrough knows the answer and is not a blinded security experiment.
 
-Keep owner-job private: it contains selection records, paths, hashes, recovered plaintext and intermediate material. If interrupted, repeat the identical command with --resume. Keep the same inputs, identity, index, program and dependencies. Completed compatible stages are reused; changed or damaged bindings are refused.
+Use a new 0.1.4 job; older jobs retain their original source binding and must use their original version. Keep owner-job private: it contains selection records, paths, hashes, recovered plaintext and intermediate material. For an interrupted walkthrough, repeat the identical command with --resume. Keep the same inputs, identity, index, program and dependencies. Completed compatible stages are reused; changed or damaged bindings are refused.
 
 ## Separate sender and recipient
 
@@ -91,7 +91,7 @@ Both capabilities use ML-KEM-768. Content-key disclosure is not the same experim
 
 Experts may inspect and modify the demo under Apache-2.0 and conduct local analysis on their own disposable inputs. [PEER_EXCHANGE.md](PEER_EXCHANGE.md) describes committed challenges, independent predictions and reveal accounting. It does not authorize testing third-party services or operational transport systems. No public decryption/guess-confirmation service is provided.
 
-Report findings through the [dedicated demo repository's Issues](https://github.com/waiyip000/traplesspke-two-boundary-demo/issues), identifying version, observation view, assumptions, expected behavior and actual observations. Use synthetic examples. Do not post reusable private keys, passwords, private commercial material or unrevealed challenge truth. Functional acceptance and a successful round trip do not prove universal unbreakability.
+Report findings through the [dedicated demo repository's Issues](https://github.com/waiyip000/traplesspke-two-boundary-demo/issues), identifying version, observation view, assumptions, expected behavior and actual observations. Use synthetic examples. Do not post reusable private keys, passwords, unrelated private material or unrevealed challenge truth. Functional acceptance and a successful round trip do not prove universal unbreakability.
 
 ## Troubleshooting and scope
 
@@ -100,10 +100,12 @@ Report findings through the [dedicated demo repository's Issues](https://github.
 - If Windows reports a sharing error, close programs editing the inputs and retry explicitly.
 - Preserve interrupted job directories and use --resume only with unchanged inputs.
 - A wrong password, wrong identity or modified bundle must not be treated as successful recovery.
-- The demo has two candidates, no signature feature, no GUI and no commercial vault. Optional GPU example generation requires the separate source-installation dependencies.
+- The demo has two candidates, no signature feature, no GUI. Optional GPU example generation requires the separate source-installation dependencies.
 
 Use this experimental demonstration for inspection with disposable data, not for live cash, valuables or VIP movement instructions.
 
 ---
 
-[Demo home](README.md) · [Repository guide](PROJECT_MAP.md) · [Downloads](https://github.com/waiyip000/traplesspke-two-boundary-demo/releases/tag/v0.1.2) · [Research hub](https://github.com/waiyip000/TraplessPKE)
+[Demo home](README.md) · [Repository guide](PROJECT_MAP.md) · [Downloads](https://github.com/waiyip000/traplesspke-two-boundary-demo/releases/tag/v0.1.4) · [Research hub](https://github.com/waiyip000/TraplessPKE)
+
+Offline-kit resume requires the same acknowledged installation stages and verifies installed bytes. Unacknowledged subprocess attempts are preserved and refused; use a new target explicitly.

@@ -30,25 +30,13 @@ after actual atomic encryption-stage publication. It is a specific boundary
 control, not arbitrary crash or physical power-loss qualification.
 
 Public artifact review separately binds exported members to newly authored demo
-source, dependency notices or derived public summaries. Commercial source/history
-and owner/control runtime material are excluded.
+source, dependency notices or derived public summaries. Private owner/control runtime material is excluded.
 
 Passing controls does not prove general choice indistinguishability, post-quantum
 security, constant-time operation, independent peer ordering, an empirical bound
-or absence of every flaw. The release's `ACCEPTANCE_RESULT.json` records actual
-outcomes. A plan, manifest or launch receipt alone is not a passing result.
+or absence of every flaw. [VALIDATION.md](VALIDATION.md) summarizes the recorded
+0.1.4 functional results. That broader review includes controls beyond the public
+acceptance runner; invoking the runner alone does not reproduce every reported
+observation. A plan, manifest or launch receipt alone is not a passing result.
 
-## Expanded Windows run — 28 September 2026
-
-[VALIDATION.md](VALIDATION.md) records the later complete Windows functional run
-against published 0.1.2 artifacts: six core families, all fourteen CLI commands,
-57/57 observed named application functions and both optional GPU producers.
-The core families used this public runner. The expanded real-terminal and
-function-observation harness was local and is not part of this release's
-`acceptance.py`; running that file alone does not reproduce the extra coverage.
-The original release result remains unchanged. No independent security verdict
-is inferred from either record.
-
----
-
-[Demo home](README.md) · [Repository guide](PROJECT_MAP.md) · [Downloads](https://github.com/waiyip000/traplesspke-two-boundary-demo/releases/tag/v0.1.2) · [Research hub](https://github.com/waiyip000/TraplessPKE)
+Use Python with assertions enabled. Optimized -O/-OO execution is refused before work starts. Checkpoints and retained material are strict bounded JSON; material migration names exactly the five original identity/input files.

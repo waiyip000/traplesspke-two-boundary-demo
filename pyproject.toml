@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "traplesspke-two-boundary-demo"
-version = "0.1.2"
+version = "0.1.4"
 license = "Apache-2.0"
 license-files = ["LICENSE", "NOTICE", "COPYRIGHT.txt"]
 description = "Inspectable two-candidate TraplessPKE reference demonstration"

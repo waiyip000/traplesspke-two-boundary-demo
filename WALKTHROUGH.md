@@ -31,6 +31,13 @@ Changed bindings or damaged stages are refused. An interrupted partial directory
 is preserved and does not count as a checkpoint. No lost original process exit is
 invented. This is stage-boundary resume, not instruction-level continuation.
 
+Version 0.1.3 introduced request format 2 and complete committed-stage file
+populations. Added or omitted files are refused. Every job binds its exact source
+and dependencies: retain old 0.1.2/0.1.3 jobs with their original implementation
+and use a new job for 0.1.4. Completed resume rechecks real recovered bytes and
+the recipient-private index.
+
+
 Keep the whole job private. It includes originals' paths/hashes, choice, selected
 output, both internally recovered candidates and recipient diagnostics. It is not
 a peer challenge export. The peer workflow uses different artifacts and roles.
@@ -44,9 +51,3 @@ not claim protection from a malicious administrator or underlying storage failur
 For simple teaching inputs the optional public `example_images.py` producer creates
 two distinct viewable BMP candidates with an inspectable OpenCL kernel. It runs
 before a challenge bit is selected and does not encode an intended-file marker.
-
-Use the [user manual](USER_MANUAL.md) for executable commands and the [peer-exchange guide](PEER_EXCHANGE.md) for a separate reviewer workflow. The [dated validation summary](VALIDATION.md) records actual interruption/resume and byte-comparison controls.
-
----
-
-[Demo home](README.md) · [Repository guide](PROJECT_MAP.md) · [Downloads](https://github.com/waiyip000/traplesspke-two-boundary-demo/releases/tag/v0.1.2) · [Research hub](https://github.com/waiyip000/TraplessPKE)

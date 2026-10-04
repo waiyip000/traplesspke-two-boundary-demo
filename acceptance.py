@@ -19,9 +19,9 @@ def sha(path):
 
 
 def save(path, obj):
-    temporary = path.with_name(path.name + '.partial-' + uuid.uuid4().hex)
+    temporary = path.parent / ('.control-partial-' + uuid.uuid4().hex)
     with temporary.open('x', encoding='utf-8') as stream:
-        json.dump(obj, stream, indent=2)
+        json.dump(obj, stream, indent=2, allow_nan=False)
         stream.flush(); os.fsync(stream.fileno())
     os.replace(temporary, path)
 
@@ -156,7 +156,14 @@ class Controls:
         folder.mkdir(exist_ok=True)
         commit = folder / 'COMMIT.json'
         if commit.exists():
-            previous = json.loads(commit.read_text())
+            from traplesspke_demo.files import read_json, fields
+            previous = read_json(commit, 4*1024**2)
+            fields(previous, ("result", "finished", "files"))
+            if not isinstance(previous["files"], dict):
+                raise RuntimeError("Invalid committed control population")
+            from traplesspke_demo.paths import members
+            actual=set(members(folder))-{'COMMIT.json'}
+            assert actual==set(previous['files']), 'Changed completed control population'
             for rel, expected in previous['files'].items():
                 assert sha(folder/rel) == expected, 'Changed completed control'
             return previous['result']
@@ -171,7 +178,11 @@ class Controls:
     def material(self, f):
         migration=self.root/'REUSED_MATERIAL.json'
         if migration.exists():
-            prior=json.loads(migration.read_text())
+            from traplesspke_demo.files import read_json, fields
+            prior=read_json(migration, 1024**2)
+            fields(prior, ("folder", "files"))
+            if not isinstance(prior["files"], dict) or set(prior["files"]) != {"private.json","public.json","first.bin","second.bin","empty.bin"}:
+                raise RuntimeError("Invalid retained material population")
             origin=Path(prior['folder'])
             for name,expected in prior['files'].items():
                 assert sha(origin/name)==expected, 'Changed retained material'
@@ -361,6 +372,9 @@ def strpath(value):
 
 
 def main():
+    if not __debug__:
+        raise RuntimeError("Functional controls require assertions enabled; do not use -O")
+    from traplesspke_demo.files import read_json
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--worker',action='store_true')
     parser.add_argument('--work',type=Path)
@@ -380,7 +394,7 @@ def main():
     from traplesspke_demo.transcript import lease
     with lease(root):
         bound=root/'BINDING.json'
-        if bound.exists(): assert json.loads(bound.read_text()) == binding,'Changed acceptance binding'
+        if bound.exists(): assert read_json(bound, 1024**2) == binding,'Changed acceptance binding'
         else: save(bound,binding)
         controls=Controls(root)
         try:
@@ -394,7 +408,12 @@ def main():
                     'runtime':material,'functional':functional,'authentication':authentication,
                     'exposure':exposure,'accounting':accounting,'comparison_resume':resume,
                     'A14':'SEPARATE_EXPORT_REVIEW','security_bound':'NOT_ESTABLISHED'}
-            save(root/'REPORT.json',report); save(root/'status.json',{'state':report['state'],'pid':os.getpid()})
+            
+            if (root/'REPORT.json').exists():
+                assert read_json(root/'REPORT.json', 4*1024**2)['binding']==binding
+                save(root/('REUSE-'+uuid.uuid4().hex+'.json'),{'state':'COMMITTED_FAMILIES_REUSED','new_worker_calls':controls.counter})
+            else:save(root/'REPORT.json',report)
+            save(root/'status.json',{'state':report['state'],'pid':os.getpid()})
         except BaseException as error:
             save(root/'status.json',{'state':'FAILED','error':str(error),'pid':os.getpid()})
             raise

@@ -1,11 +1,10 @@
-# Public demo protocol 1 — application version 0.1.2
+# Public demo protocol 1 — application version 0.1.4
 
-Application 0.1.2 preserves protocol-1 wire bytes and the `0.1.0` domain separation string.
+R2 preserves protocol-1 wire bytes and the `0.1.0` domain separation string.
 Source versions and transcript versions are tracked separately; see CHANGES.md.
 
 This is a new Python reference composition of the requested two effects. It is
-not wire-compatible with the commercial implementation and inherits no commercial
-security result. The complete composition is in `identity.py` and `protocol.py`.
+a self-contained demonstration and establishes no cryptographic security result. The complete composition is in `identity.py` and `protocol.py`.
 
 ## Primitives and dependency boundary
 
@@ -111,10 +110,10 @@ Ordinary final output is withheld until the full content and intent path succeed
 | H, frame ciphertexts | Public identity, candidate bytes, fresh content randomness | V0/V1a/V1b |
 | d | H and ordered content ciphertext | Publicly derivable |
 | intent_ct | pi and fresh intent randomness | V0/V1a/V1b |
-| encrypted I | selected index, Si, bundle ID, d | Ciphertext only |
+| encrypted I | js, Si, bundle ID, d | Ciphertext only |
 | Candidate bytes/lengths | Actual content decoding | V1a/V1b |
 | sc, Sc, Kc | Content capability and actual bundle | V1b |
-| si, Si, Ki, selected index, selected output | Private intent/owner/recipient state | Withheld in an open challenge |
+| si, Si, Ki, js, selected output | Private intent/owner/recipient state | Withheld in an open challenge |
 
 Secret-independent content construction is necessary to the intended observation
 boundary, but is not a proof of the composed scheme. Independent keys do not
@@ -132,10 +131,6 @@ Metadata, bundle decoding and comparison reads use the same stable-read helper.
 See Microsoft's [CreateFileW sharing semantics](https://learn.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-createfilew).
 
 The library has no arbitrary instruction-level resume. The owner `walkthrough`
-command commits dependency-bound stages; only
+command and detached construction driver commit dependency-bound stages; only
 unfinished operations are repeated. Canonical metadata files are bounded to 32 KiB
 by ordinary readers; internal bound-job manifests use an explicit 1 MiB bound.
-
----
-
-[Demo home](README.md) · [Repository guide](PROJECT_MAP.md) · [Downloads](https://github.com/waiyip000/traplesspke-two-boundary-demo/releases/tag/v0.1.2) · [Research hub](https://github.com/waiyip000/TraplessPKE)

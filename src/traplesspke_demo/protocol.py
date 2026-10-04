@@ -17,6 +17,7 @@ from pqcrypto.kem import ml_kem_768 as kem
 from .files import (DemoError, admit, copy_new, digest_file, exact, output, locked_read,
                     read_json, unb64, write_json)
 from .identity import public_id, unlock, validate_public
+from .paths import plain, vacant
 
 MAGIC = b"TBDEMO1\x00"
 CHUNK = 65536
@@ -44,6 +45,8 @@ def bounded_map(pool, function, items):
 
 
 def nonce(slot, ordinal):
+    if type(slot) is not int or slot not in (0,1) or type(ordinal) is not int or not 0 <= ordinal < MAX_ROUNDS:
+        raise DemoError('Invalid content nonce coordinates')
     return struct.pack(">IQ", slot, ordinal)
 
 
@@ -64,7 +67,7 @@ def send(public_path, candidates, intended, destination):
     if type(intended) is not int or intended not in (0, 1) or len(candidates) != 2:
         raise DemoError("Exactly two candidates and an explicit index 0 or 1 are required")
     public = validate_public(read_json(public_path))
-    paths = [Path(p).resolve() for p in candidates]
+    paths = [plain(p) for p in candidates]
     with ExitStack() as locks:
         handles = [locks.enter_context(locked_read(p)) for p in paths]
         sizes = [os.fstat(f.fileno()).st_size for f in handles]
@@ -114,14 +117,16 @@ def send(public_path, candidates, intended, destination):
 
 def decode_content(public, content_secret, bundle, stage):
     """Actual content-only path. Does not accept an intent key or intended index."""
-    stage = Path(stage)
-    stage.mkdir(parents=True, exist_ok=False)
+    stage = vacant(stage)
     public = validate_public(public)
+    if type(content_secret) is not bytes or len(content_secret) != kem.SECRET_KEY_SIZE:
+        raise DemoError("Invalid content capability")
     paths = [stage / "candidate-0.bin", stage / "candidate-1.bin"]
     with locked_read(bundle) as source:
         header, bundle_id, cc, rounds = header_read(source, public)
-        admit(paths[0], 2 * rounds * CHUNK)
         shared = kem.decrypt(content_secret, cc)
+        stage.mkdir(parents=True, exist_ok=False)
+        admit(paths[0], 2 * rounds * CHUNK)
         key = derive(shared, bundle_id, b"content")
         header_hash = hashlib.sha256(header).digest()
         binding = hashlib.sha256(DOMAIN + b"binding" + header)
@@ -174,13 +179,21 @@ def identify(decoded, intent_secret):
 
 
 def receive(private_path, password, bundle, destination, diagnostic=None):
+    target=vacant(destination)
+    if diagnostic is not None:
+        diagnostic = vacant(diagnostic)
+        if diagnostic == target:
+            raise DemoError('Output and private diagnostic must differ')
+        admit(diagnostic, 32768)
     public, sc, si = unlock(private_path, password)
-    parent = Path(destination).resolve().parent
-    admit(destination, 2 * Path(bundle).stat().st_size)
-    stage = parent / (".private-recovery-" + uuid.uuid4().hex[:12])
-    decoded = decode_content(public, sc, bundle, stage)
-    index = identify(decoded, si)
-    copy_new(decoded["paths"][index], destination)
+    parent = target.parent
+    with locked_read(bundle) as stable:
+        header_read(stable, public)
+        admit(destination, 2 * os.fstat(stable.fileno()).st_size)
+        stage = parent / (".private-recovery-" + uuid.uuid4().hex[:12])
+        decoded = decode_content(public, sc, bundle, stage)
+        index = identify(decoded, si)
+        copy_new(decoded["paths"][index], destination)
     # Ordinary acknowledgements do not publish a selected-only digest or size.
     result = {"state": "RECOVERED", "private_recovery_folder": str(stage)}
     if diagnostic:

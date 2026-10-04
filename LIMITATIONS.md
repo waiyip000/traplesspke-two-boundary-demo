@@ -1,7 +1,6 @@
 # Limits and acceptance scope
 
 - Exactly two candidates, one suite, unsigned profile, Windows Python 3.12.
-- Demo format is intentionally separate from commercial key/bundle formats.
 - Both key capabilities use ML-KEM-768. General compromise of that primitive may
   defeat both boundaries; independent key generation does not prevent that.
 - Python timing, immutable copies, heap contents and global erasure are unqualified.
@@ -25,9 +24,5 @@
   controls recorded in the release result count as passed.
 - The owner walkthrough resumes committed compatible stages. Separate low-level
   CLI operations preserve partials but do not resume inside a primitive or chunk.
-- Demo source uses Apache-2.0 and is [publicly released](https://github.com/waiyip000/traplesspke-two-boundary-demo/releases/tag/v0.1.2).
-  Research-hub access is separate; this demo does not require that repository.
-
----
-
-[Demo home](README.md) · [Repository guide](PROJECT_MAP.md) · [Downloads](https://github.com/waiyip000/traplesspke-two-boundary-demo/releases/tag/v0.1.2) · [Research hub](https://github.com/waiyip000/TraplessPKE)
+- Demo source uses Apache-2.0. Public availability requires an actual repository
+  URL and release; source preparation alone does not establish publication.

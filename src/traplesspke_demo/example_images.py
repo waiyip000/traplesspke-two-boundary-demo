@@ -5,6 +5,7 @@ import struct
 import time
 
 from .files import DemoError, output, write_json
+from .paths import plain, vacant
 
 KERNEL = r"""
 __kernel void paint(__global uchar *pixels, const uint palette) {
@@ -20,14 +21,14 @@ __kernel void paint(__global uchar *pixels, const uint palette) {
 def create_images(folder):
     import numpy as np
     import pyopencl as cl
-    folder = Path(folder)
-    folder.mkdir(parents=True, exist_ok=False)
+    folder = vacant(folder)
     matches = [(p, d) for p in cl.get_platforms()
                for d in p.get_devices(device_type=cl.device_type.GPU)
                if d.host_unified_memory]
     if len(matches) != 1:
         raise DemoError("A unique runtime-observed unified-memory GPU is required; no silent fallback")
     platform, device = matches[0]
+    folder.mkdir(parents=True, exist_ok=False)
     ctx = cl.Context([device])
     queue = cl.CommandQueue(ctx, properties=cl.command_queue_properties.PROFILING_ENABLE)
     cache = folder / ".opencl-cache"
